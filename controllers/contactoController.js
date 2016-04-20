@@ -7,25 +7,25 @@ let Contacto = mongoose.model('contacto');
 exports.create = function(req, res) {
   let contacto = new Contacto(req.body);
 
-  contacto.save(function(err) {
-    if (err) req.send(err);
-    res.send(contacto);
+  contacto.save(function(err, contacto) {
+    if (err) return res.status(500).send(err.message);
+    res.status(200).jsonp(contacto);
   });
 };
 
 exports.delete = function(req, res) {
-  let contacto = Contacto.find({ _id: req.body.id });
-
-  Contacto.remove({ _id: contacto._id }, function(err) {
-    if (err) res.send(err);
-    res.send(contacto);
+  Contacto.findById(req.params.id, function (err, contacto) {
+    if (err) return res.send(500, err.message);
+    contacto.remove(function (err) {
+      if (err) return res.send(500, err.message);
+      res.status(200).send();
+    });
   });
 };
 
 exports.list = function(req, res) {
   Contacto.find({}, function (err, contactos) {
-    if (err) res.send(err);
-    res.setHeader('Content-Type', 'application/json');
-    res.send(contactos);
+    if (err) return res.send(500, err.message);
+    res.status(200).jsonp(contactos);
   });
 };
