@@ -1,6 +1,6 @@
 'use strict';
 
-const port = process.env.PORT || 8080;
+const port = process.env.PORT || 8000;
 
 const express = require('./config/express');
 const mongoose = require('./config/mongoose');
@@ -8,10 +8,8 @@ const mongoose = require('./config/mongoose');
 let db = mongoose(),
     app = express();
 
-app.listen(port, onListening);
+app.listen(port);
 
 module.exports = app;
 
-function onListening() {
-  console.log(`Server listening on port ${port}`)
-}
+console.log(`Server listening on port ${port}`)
