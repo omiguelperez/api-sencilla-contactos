@@ -10,6 +10,7 @@ module.exports = function() {
   app.use(bodyParser.urlencoded({
     extended: true
   }));
+  app.use(bodyParser.json());
 
   require('../router')(app);
   return app;
