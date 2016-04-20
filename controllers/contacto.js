@@ -13,15 +13,6 @@ exports.create = function(req, res) {
   });
 };
 
-exports.delete = function(req, res) {
-  let contacto = Contacto.find({ _id: req.body.id });
-
-  Contacto.remove({ _id: contacto._id }, function(err) {
-    if (err) res.send(err);
-    res.send(contacto);
-  });
-};
-
 exports.list = function(req, res) {
   Contacto.find({}, function (err, contactos) {
     if (err) res.send(err);

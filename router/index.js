@@ -6,6 +6,9 @@ module.exports = function (app) {
 
   app.route('/api/contactos/')
     .post(contacto.create)
-    .get(contacto.list)
+    .get(contacto.list);
+
+  app.route('/api/contactos/:id')
+    .delete(contacto.delete);
 
 };
