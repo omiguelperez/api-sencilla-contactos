@@ -1,9 +1,9 @@
-'use strict'
+'use strict';
+
+var concatoCtl = require('../controllers/contactoController');
+
 
 module.exports = function (app) {
-
-  app.get('/', function (req, res) {
-    res.send('Este es el home del sitio')
-  })
-
-}
+  app.route('api/contacto/')
+      .post(concatoCtl.create)
+};

@@ -2,9 +2,11 @@
 
 const port = process.env.PORT || 8080;
 
-var express = require('./config/express');
+var express = require('./config/express'),
+    mongoose = require('./config/mongoose');
 
-var app = express();
+var db = mongoose(),
+    app = express();
 
 app.listen(port);
 
