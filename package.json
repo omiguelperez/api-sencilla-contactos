@@ -1,0 +1,19 @@
+{
+  "name": "api-sencilla-contactos",
+  "version": "0.0.1",
+  "description": "Esta es una API sencilla hecha en grupo",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/omiguelperez/api-sencilla-contactos.git"
+  },
+  "author": "Oscar Pérez <oscarperez0196@gmail.com>, Erick Ramses <ramses.manosalva@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/omiguelperez/api-sencilla-contactos/issues"
+  },
+  "homepage": "https://github.com/omiguelperez/api-sencilla-contactos#readme"
+}
