@@ -14,13 +14,12 @@ exports.create = function(req, res) {
 };
 
 exports.delete = function(req, res) {
-  let contacto = Contacto.find({ _id: req.body.id });
-
-  Contacto.remove({ _id: contacto._id }, function(err) {
-    if (err) res.send(err);
-    res.send(contacto);
-  });
-};
+    let contacto = req.contacto
+    contacto.remove({},function(err) {
+        if (!err) res.json(contacto)
+        else console.log("ERROR: " + err)
+    })
+}
 
 exports.list = function(req, res) {
   Contacto.find({}, function (err, contactos) {
@@ -28,4 +27,16 @@ exports.list = function(req, res) {
     res.setHeader('Content-Type', 'application/json');
     res.send(contactos);
   });
+};
+
+
+exports.contactoByID = function(req, res, next, id) {
+    Contacto.findById(id,function(err, contacto) {
+        if (err) return next(err);
+        if (!contacto) return next(new Error('Fallo al cargar la serie de tv ' + id));
+        // Si una contacto es encontrada usar el objeto 'request' para pasarlo al siguietne middleware
+        req.contacto = contacto;
+        // Llamar al siguiente middleware
+        next();
+    });
 };
