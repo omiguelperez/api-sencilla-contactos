@@ -29,3 +29,20 @@ exports.list = function(req, res) {
     res.status(200).jsonp(contactos);
   });
 };
+
+exports.update = function (req, res) {
+  Contacto.findById(req.params.id, function (err, contacto) {
+    if (err) return res.send(500, err.message);
+
+    contacto.correo = req.body.correo;
+    contacto.nombres = req.body.nombres;
+    contacto.apellidos = req.body.apellidos;
+    contacto.telefono = req.body.telefono;
+    contacto.direccion = req.body.direccion;
+
+    contacto.save(function (err, contacto) {
+      if (err) return res.send(500, err.message);
+      res.status(200).send();
+    });
+  });
+};
