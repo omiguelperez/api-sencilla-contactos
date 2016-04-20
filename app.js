@@ -2,14 +2,16 @@
 
 const port = process.env.PORT || 8080;
 
-var express = require('./config/express'),
-    mongoose = require('./config/mongoose');
+const express = require('./config/express');
+const mongoose = require('./config/mongoose');
 
-var db = mongoose(),
+let db = mongoose(),
     app = express();
 
-app.listen(port);
+app.listen(port, onListening);
 
 module.exports = app;
 
-console.log(`Server listening on port ${port}`);
+function onListening() {
+  console.log(`Server listening on port ${port}`)
+}

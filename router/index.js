@@ -1,9 +1,10 @@
 'use strict';
 
-var concatoCtl = require('../controllers/contactoController');
-
+var contacto = require('../controllers/contacto');
 
 module.exports = function (app) {
+
   app.route('api/contacto/')
-      .post(concatoCtl.create)
+    .post(contacto.create)
+
 };

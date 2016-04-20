@@ -1,8 +1,12 @@
-var mongoose = require('mongoose');
+'use strict';
 
+const mongoose = require('mongoose');
 
 module.exports = function() {
-    var db = mongoose.connect('mongodb://localhost/contacto');
-    require('../models/contacto');
-    return db
+
+  let db = mongoose.connect('mongodb://localhost/contacto');
+
+  require('../models/contacto');
+  return db;
+
 };
