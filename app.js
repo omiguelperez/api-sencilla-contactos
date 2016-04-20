@@ -1,15 +1,13 @@
-'use strict'
+'use strict';
 
-const port = process.env.PORT || 8080
+const port = process.env.PORT || 8080;
 
-const express = require('express')
+var express = require('./config/express');
 
-const app = express()
+var app = express();
 
-function onListening() {
-  console.log(`Server listening on port ${port}`)
-}
+app.listen(port);
 
-require('./router')(app)
+module.exports = app;
 
-app.listen(port, onListening)
+console.log(`Server listening on port ${port}`);
