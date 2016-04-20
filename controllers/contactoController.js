@@ -1,13 +1,16 @@
-var mongoose = require('mongoose'),
-    contacto = mongoose.model('contacto');
+'use strict';
 
+const mongoose = require('mongoose');
 
-exports.create = function(req,res) {
-    console.log("POST");
-    console.log(req.body);
-    var serietv = new contacto(req.boby);
-    serietv.save(function(err) {
-        if (!err) res.send(serietv);
-        else res.send(err)
-    })
+let Contacto = mongoose.model('contacto');
+
+exports.create = function(req, res) {
+
+    let contacto = new Contacto(req.body);
+
+    contacto.save(function(err) {
+        if (err) req.send(err);
+
+        res.send(contacto);
+    });
 };

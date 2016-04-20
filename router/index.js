@@ -1,10 +1,10 @@
 'use strict';
 
-var contacto = require('../controllers/contacto');
+var contacto = require('../controllers/contactoController');
 
 module.exports = function (app) {
 
-  app.route('api/contacto/')
+  app.route('/api/contacto/')
     .post(contacto.create)
 
 };
