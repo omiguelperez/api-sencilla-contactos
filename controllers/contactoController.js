@@ -16,6 +16,7 @@ exports.create = function(req, res) {
 exports.list = function(req, res) {
   Contacto.find({}, function (err, contactos) {
     if (err) res.send(err);
+    res.setHeader('Content-Type', 'application/json');
     res.send(contactos);
   });
 };
